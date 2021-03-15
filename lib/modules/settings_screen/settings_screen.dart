@@ -2,136 +2,113 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/modules/countries_screen/countries_screen.dart';
 import 'package:flutter_app/shared/components/constants.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatelessWidget
+{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios_outlined,
-            size: 18.0,
-            color: Colors.grey,
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
+      child: Column(
+        children: [
+          buildDivider(
+            height: 30.0,
           ),
-        ),
-        title: Text(
-          'Settings',
-          style: TextStyle(
-            color: Colors.black,
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: ()
+            {
+              navigateTo(context, CountriesScreen(),);
+            },
           ),
-        ),
-        backgroundColor: Colors.white,
-      ),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            buildDivider(
-              height: 30.0,
+          buildDivider(
+            height: 30.0,
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
             ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: ()
-              {
-                navigateTo(context, CountriesScreen(),);
-              },
+            child: buildDivider(),
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          buildDivider(
+            height: 30.0,
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
             ),
-            buildDivider(
-              height: 30.0,
+            child: buildDivider(),
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
             ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
+            child: buildDivider(),
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          buildDivider(
+            height: 30.0,
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          buildDivider(
+            height: 30.0,
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
-              child: buildDivider(),
+            child: buildDivider(),
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
             ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            buildDivider(
-              height: 30.0,
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
-              child: buildDivider(),
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
-              child: buildDivider(),
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            buildDivider(
-              height: 30.0,
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            buildDivider(
-              height: 30.0,
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
-              child: buildDivider(),
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
-              child: buildDivider(),
-            ),
-            buildSettingsItem(
-              icon: Icons.settings,
-              text: 'Change Language',
-              function: () {},
-            ),
-          ],
-        ),
+            child: buildDivider(),
+          ),
+          buildSettingsItem(
+            icon: Icons.settings,
+            text: 'Change Language',
+            function: () {},
+          ),
+        ],
       ),
     );
   }

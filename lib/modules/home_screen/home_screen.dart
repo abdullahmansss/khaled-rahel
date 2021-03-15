@@ -7,7 +7,8 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+{
   int counter = 1;
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -16,49 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) {
-    int b = 0;
+  int count = 0;
 
+  @override
+  Widget build(BuildContext context)
+  {
     return Scaffold(
       backgroundColor: Colors.white,
       key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        // leading: Icon(
-        //   Icons.agriculture,
-        // ),
-        // title: Text(
-        //   'Hello',
-        // ),
-        actions: [
-          // IconButton(
-          //   icon: Icon(
-          //     Icons.search,
-          //   ),
-          //   onPressed: () {
-          //     print('search clicked');
-          //     b++;
-          //     print(b);
-          //   },
-          // ),
-          // IconButton(
-          //   icon: Icon(
-          //     Icons.notifications,
-          //   ),
-          //   onPressed: () {
-          //     print('notifications clicked');
-          //   },
-          // ),
-          MaterialButton(
-            onPressed: () {},
-            child: Text(
-              'SKIP',
-            ),
-          ),
-        ],
-      ),
       body: Form(
         key: formKey,
         child: Padding(
@@ -100,17 +66,71 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 20.0,
               ),
-              Container(
-                width: double.infinity,
-                child: defaultButton(
-                  press: () {
-                    String value = emailController.text;
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      child: defaultButton(
+                        press: ()
+                        {
+                          // String value = emailController.text;
+                          //
+                          // emailValidation(value);
 
-                    emailValidation(value);
-                  },
-                  text: 'login',
+                          setState(()
+                          {
+                            count--;
+                            print(count);
+                          });
+                        },
+                        text: 'minus 1',
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: defaultButton(
+                        press: ()
+                        {
+                          // String value = emailController.text;
+                          //
+                          // emailValidation(value);
+                          setState(()
+                          {
+                            count++;
+                            print(count);
+                          });
+                        },
+                        text: 'plus 1',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                count.toString(),
+                style: TextStyle(
+                  fontSize: 30.0,
                 ),
               ),
+              // Container(
+              //   width: double.infinity,
+              //   child: defaultButton(
+              //     press: ()
+              //     {
+              //       // String value = emailController.text;
+              //       //
+              //       // emailValidation(value);
+              //     },
+              //     text: 'result',
+              //   ),
+              // )
               // SizedBox(
               //   height: 40.0,
               // ),
@@ -168,7 +188,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void emailValidation(String value) {
+  void emailValidation(String value)
+  {
     navigateTo(
       context,
       SettingsScreen(),

@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/shared/components/constants.dart';
 
-class CountriesScreen extends StatelessWidget {
+class CountriesModel
+{
+  final String flag;
+  final String country;
+  final String number;
+
+  CountriesModel({
+    this.flag,
+    this.country,
+    this.number,
+  });
+}
+
+class CountriesScreen extends StatelessWidget
+{
+  List<CountriesModel> countries = [];
+
   @override
   Widget build(BuildContext context) {
+    fillData();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -33,7 +51,10 @@ class CountriesScreen extends StatelessWidget {
         ),
         child: ListView.separated(
           physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index) => buildCountryItem(index),
+          itemBuilder: (context, index) => buildCountryItem(
+            index,
+            countries[index],
+          ),
           separatorBuilder: (context, index) => Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 20.0,
@@ -41,18 +62,46 @@ class CountriesScreen extends StatelessWidget {
             ),
             child: buildDivider(),
           ),
-          itemCount: 30,
+          itemCount: countries.length,
         ),
       ),
     );
   }
 
-  Widget buildCountryItem(int index) => InkWell(
-    onTap: ()
-    {
-      print('index $index clicked');
-    },
-    child: Padding(
+  void fillData() {
+    countries.add(
+      CountriesModel(
+        country: 'Egypt',
+        flag:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThGs4pPDmwBqiiwCt8W4g7fMaVeyk4C5alxw&usqp=CAU',
+        number: '13',
+      ),
+    );
+
+    countries.add(
+      CountriesModel(
+        country: 'England',
+        flag:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThGs4pPDmwBqiiwCt8W4g7fMaVeyk4C5alxw&usqp=CAU',
+        number: '15',
+      ),
+    );
+
+    countries.add(
+      CountriesModel(
+        country: 'Austria',
+        flag:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThGs4pPDmwBqiiwCt8W4g7fMaVeyk4C5alxw&usqp=CAU',
+        number: '25',
+      ),
+    );
+  }
+
+  Widget buildCountryItem(int index, CountriesModel model) => InkWell(
+        onTap: () {
+          print('index $index clicked');
+        },
+        child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20.0,
           ),
@@ -61,21 +110,22 @@ class CountriesScreen extends StatelessWidget {
               CircleAvatar(
                 radius: 15.0,
                 backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThGs4pPDmwBqiiwCt8W4g7fMaVeyk4C5alxw&usqp=CAU'),
+                  model.flag,
+                ),
               ),
               SizedBox(
                 width: 20.0,
               ),
               Expanded(
                 child: Text(
-                  'Egypt',
+                  model.country,
                 ),
               ),
               SizedBox(
                 width: 20.0,
               ),
               Text(
-                '93',
+                model.number,
               ),
               SizedBox(
                 width: 5.0,
@@ -88,5 +138,5 @@ class CountriesScreen extends StatelessWidget {
             ],
           ),
         ),
-  );
+      );
 }
